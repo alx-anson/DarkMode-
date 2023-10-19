@@ -18,7 +18,7 @@
             android:name=".MainActivity"
             android:theme="@style/Theme.AppCompat"
             android:exported="true"
-            android:screenOrientation="fullSensor">
+            android:screenOrientation="landscape">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
