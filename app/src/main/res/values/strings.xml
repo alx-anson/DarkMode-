@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Lower Brightness</string>
+    <string name="adjust">Click to manage the brightness</string>
+    <string name="on">On</string>
+    <string name="off">Off</string>
+    <string name="minus">-</string>
+    <string name="plus">+</string>
+    <string name="warning">Don\'t close the app, keep it in the background</string>
+</resources>

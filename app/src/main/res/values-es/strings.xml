@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Menos Brillo</string>
+    <string name="adjust">Pulsa para ajustar el brillo</string>
+    <string name="on">On</string>
+    <string name="off">Off</string>
+    <string name="minus">-</string>
+    <string name="plus">+</string>
+    <string name="warning">No cierres la app, mantenla en segundo plano</string>
+</resources>

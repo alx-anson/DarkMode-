@@ -1,0 +1,28 @@
+<resources>
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+
+        <!-- Color de la barra de acción (barra superior) -->
+        <item name="colorPrimary">@color/black</item>
+
+        <!-- Color del texto en la barra de acción -->
+        <item name="colorPrimaryDark">@color/white</item>
+
+        <!-- Color del texto y elementos en la barra de acción -->
+        <item name="colorAccent">@color/white</item>
+
+        <!-- Color del texto y elementos en la barra de acción cuando está deshabilitado -->
+        <item name="colorControlNormal">@color/grey</item>
+
+        <!-- Color de fondo para componentes desactivados -->
+        <item name="colorControlHighlight">@color/dark_grey</item>
+
+        <!-- Color de fondo para la barra de estado (barra superior) -->
+        <item name="android:statusBarColor">@color/black</item>
+
+        <!-- Color de fondo para la barra de navegación (si es aplicable) -->
+        <item name="android:navigationBarColor">@color/black</item>
+    </style>
+    <style name="MyButtonStyle">
+        <item name="android:background">@drawable/button_background</item>
+    </style>
+</resources>
