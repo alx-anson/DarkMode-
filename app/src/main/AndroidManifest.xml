@@ -13,9 +13,10 @@
         android:roundIcon="@drawable/app_icon"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
+        android:forceDarkAllowed="false"
         tools:targetApi="34">
         <activity
-            android:name="com.anson.darkmodeplus.MainActivity"
+            android:name="com.anson.darkmodeplus.MainActivity2"
             android:theme="@style/Theme.AppCompat"
             android:exported="true"
             android:screenOrientation="landscape">
