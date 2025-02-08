@@ -1,4 +1,4 @@
-package com.anson.lowerbrightness
+package com.anson.darkmodeplus
 
 class Constants {
     companion object {

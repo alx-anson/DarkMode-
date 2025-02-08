@@ -15,7 +15,7 @@
         android:theme="@style/AppTheme"
         tools:targetApi="34">
         <activity
-            android:name=".MainActivity"
+            android:name="com.anson.darkmodeplus.MainActivity"
             android:theme="@style/Theme.AppCompat"
             android:exported="true"
             android:screenOrientation="landscape">
@@ -25,7 +25,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <service android:name=".OverlayService" />
+        <service android:name="com.anson.darkmodeplus.OverlayService" />
     </application>
 
 </manifest>

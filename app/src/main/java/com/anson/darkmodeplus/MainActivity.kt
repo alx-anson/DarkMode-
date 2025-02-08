@@ -1,4 +1,4 @@
-package com.anson.lowerbrightness
+package com.anson.darkmodeplus
 
 import android.content.Intent
 import android.net.Uri
@@ -7,9 +7,9 @@ import android.provider.Settings
 import android.view.View
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import com.anson.lowerbrightness.Constants.Companion.HIDE_OVERLAY
-import com.anson.lowerbrightness.Constants.Companion.overlayLv
-import com.anson.lowerbrightness.databinding.ActivityMainBinding
+import com.anson.darkmodeplus.Constants.Companion.HIDE_OVERLAY
+import com.anson.darkmodeplus.Constants.Companion.overlayLv
+import com.anson.darkmodeplus.databinding.ActivityMainBinding
 
 
 class MainActivity : AppCompatActivity() {

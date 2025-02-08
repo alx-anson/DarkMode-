@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace 'com.anson.lowerbrightness'
+    namespace 'com.anson.darkmodeplus'
     compileSdk 35
 
     defaultConfig {
-        applicationId "com.anson.lowerbrightness"
+        applicationId "com.anson.darkmodeplus"
         minSdk 26
         targetSdk 35
         versionCode 1

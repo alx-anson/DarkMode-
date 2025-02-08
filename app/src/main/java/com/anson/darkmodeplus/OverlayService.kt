@@ -1,4 +1,4 @@
-package com.anson.lowerbrightness
+package com.anson.darkmodeplus
 
 import android.app.Service
 import android.content.Intent
@@ -7,7 +7,7 @@ import android.os.IBinder
 import android.view.View
 import android.view.WindowManager
 import androidx.core.content.ContextCompat
-import com.anson.lowerbrightness.Constants.Companion.overlayLv
+import com.anson.darkmodeplus.Constants.Companion.overlayLv
 
 class OverlayService : Service() {
     private var overlayView: View? = null
