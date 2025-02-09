@@ -1,4 +1,4 @@
-package com.anson.darkmodeplus
+package com.anson.darkmodeplus.view.ui
 
 import android.app.Activity
 import android.os.Build
@@ -28,7 +28,7 @@ private val DarkColorScheme = darkColorScheme(
     onBackground = Color(0xFFE0E0E0),
     onSurface = Color(0xFFE0E0E0),
     outline = Color(0xFF333333),
-    tertiary = Color(0xFFBB86FC) // Color de acento
+    tertiary = Color(0xFFBB86FC)
 )
 
 private val LightColorScheme = lightColorScheme(
@@ -41,7 +41,7 @@ private val LightColorScheme = lightColorScheme(
     onBackground = Color(0xFFE0E0E0),
     onSurface = Color(0xFFE0E0E0),
     outline = Color(0xFF333333),
-    tertiary = Color(0xFFBB86FC) // Color de acento
+    tertiary = Color(0xFFBB86FC)
 )
 
 @Composable

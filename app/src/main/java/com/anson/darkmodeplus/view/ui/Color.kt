@@ -1,6 +1,5 @@
-package com.anson.darkmodeplus
+package com.anson.darkmodeplus.view.ui
 
-import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 
 class Color {
@@ -12,7 +11,7 @@ class Color {
     val onSecondary = Color(0xFFB0B0B0)
     val onBackground = Color(0xFFE0E0E0)
     val onSurface = Color(0xFFE0E0E0)
-    val outline = Color(0xFF333333)
+    val warning = Color(0xFFFF9800)
     val tertiary = Color(0xFFBB86FC)
 }
 
