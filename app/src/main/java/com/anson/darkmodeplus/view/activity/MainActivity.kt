@@ -8,21 +8,56 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.SnackbarDuration
+import androidx.compose.material3.SnackbarHost
+import androidx.compose.material3.SnackbarHostState
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import com.anson.darkmodeplus.R
 import com.anson.darkmodeplus.view.screens.Content
 import com.anson.darkmodeplus.view.ui.DarkModePlusTheme
 import com.anson.darkmodeplus.view.viewmodel.MainViewModel
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
-    private val viewModel by viewModels<MainViewModel>()
+    private val viewModel: MainViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         checkSystemAlertWindowPermission()
         viewModel.bindService(this)
+        viewModel.updateMemories()
         setContent {
             DarkModePlusTheme {
-                Content(viewModel = viewModel)
+                val snackBarHostState = remember { SnackbarHostState() }
+                val memorySaved by viewModel.memorySaved.collectAsState()
+                val scope = rememberCoroutineScope()
+                if (memorySaved != 0) {
+                    LaunchedEffect(Unit) {
+                        scope.launch {
+                            snackBarHostState.showSnackbar(
+                                message = "Memoria $memorySaved guardada",
+                                duration = SnackbarDuration.Short
+                            )
+                            delay(500)
+                            viewModel.resetMemorySaved()
+                        }
+                    }
+                }
+                Scaffold(
+                    snackbarHost = {
+                        SnackbarHost(hostState = snackBarHostState)
+                    }
+                ) { contentPadding ->
+                    Content(viewModel = viewModel, contentPadding)
+                }
             }
         }
     }

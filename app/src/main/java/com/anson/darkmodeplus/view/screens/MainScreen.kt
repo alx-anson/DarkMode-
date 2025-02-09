@@ -1,13 +1,18 @@
 package com.anson.darkmodeplus.view.screens
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
+import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
@@ -24,6 +29,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.anson.darkmodeplus.view.ui.Color
@@ -31,12 +37,13 @@ import com.anson.darkmodeplus.view.ui.typo
 import com.anson.darkmodeplus.view.viewmodel.MainViewModel
 
 @Composable
-fun Content(viewModel: MainViewModel) {
+fun Content(viewModel: MainViewModel, contentPadding: PaddingValues) {
     val overlayEnabled by viewModel.overlayEnabled.collectAsState()
 
     Box(
         modifier = Modifier
             .fillMaxSize()
+            .padding(contentPadding)
             .background(Color().background),
         contentAlignment = Alignment.Center
     ) {
@@ -70,6 +77,7 @@ fun Content(viewModel: MainViewModel) {
                 )
             }
             OverlayControls(viewModel = viewModel)
+            MemorySection(viewModel = viewModel)
         }
         Box(
             contentAlignment = Alignment.BottomEnd, modifier = Modifier
@@ -109,6 +117,84 @@ fun OverlayControls(viewModel: MainViewModel) {
                 disabledInactiveTrackColor = Color().background
             ),
             interactionSource = remember { MutableInteractionSource() }
+        )
+    }
+}
+
+@Composable
+fun MemorySection(viewModel: MainViewModel) {
+    val enabled by viewModel.overlayEnabled.collectAsState()
+    Column(modifier = Modifier.padding(top = 56.dp), horizontalAlignment = Alignment.CenterHorizontally) {
+        Text(
+            text = "Puedes guardar hasta 3 ajustes de brillo",
+            style = MaterialTheme.typo.titleLarge,
+            color = if (enabled) Color().onBackground else Color().background
+        )
+        Spacer(modifier = Modifier.height(32.dp))
+        Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Center) {
+            MemoryButton(
+                enabled = enabled,
+                text = "Memoria 1",
+                onClick = { viewModel.selectMemory(1) },
+                onLongClick = { viewModel.saveMemory(1) }
+            )
+            Spacer(modifier = Modifier.width(16.dp))
+            MemoryButton(
+                enabled = enabled,
+                text = "Memoria 2",
+                onClick = { viewModel.selectMemory(2) },
+                onLongClick = { viewModel.saveMemory(2) }
+            )
+            Spacer(modifier = Modifier.width(16.dp))
+            MemoryButton(
+                enabled = enabled,
+                text = "Memoria 3",
+                onClick = { viewModel.selectMemory(3) },
+                onLongClick = { viewModel.saveMemory(3) }
+            )
+        }
+        Spacer(modifier = Modifier.height(32.dp))
+
+        Text(
+            text = "Mantén pulsado para guardar la memoria",
+            style = MaterialTheme.typo.bodyMedium,
+            color = if (enabled) Color().onBackground else Color().background
+        )
+    }
+}
+
+@Composable
+fun MemoryButton(enabled: Boolean, text: String, onClick: () -> Unit, onLongClick: () -> Unit) {
+    Box(
+        modifier = Modifier
+            .height(60.dp)
+            .width(180.dp)
+            .pointerInput(Unit) {
+                detectTapGestures(
+                    onTap = {
+                        onClick()
+                    },
+                    onLongPress = {
+                        onLongClick()
+                    }
+                )
+            }
+            .border(
+                width = 2.dp,
+                color = if (enabled) Color().tertiary else Color().background,
+                shape = RoundedCornerShape(16.dp)
+            )
+            .background(
+                color = if (enabled) Color().primary else Color().background,
+                shape = RoundedCornerShape(16.dp)
+            )
+            .padding(8.dp),
+        contentAlignment = Alignment.Center
+    ) {
+        Text(
+            text = text,
+            style = MaterialTheme.typo.bodyMedium,
+            color = if (enabled) Color().onPrimary else Color().background
         )
     }
 }
