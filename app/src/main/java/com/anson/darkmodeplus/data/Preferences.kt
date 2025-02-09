@@ -12,7 +12,6 @@ class DataStoreManager @Inject constructor(
     private val dataStore: DataStore<Preferences>
 ) {
     suspend fun saveMemory(value: String, memoryNumber: Int) {
-        println("Saving memory $memoryNumber with value $value")
         val key = stringPreferencesKey("MEMORY_$memoryNumber")
         dataStore.edit { preferences ->
             preferences[key] = value
@@ -20,7 +19,6 @@ class DataStoreManager @Inject constructor(
     }
 
     fun getMemory(memoryNumber: Int): Flow<String?> {
-        println("Getting memory $memoryNumber")
         val key = stringPreferencesKey("MEMORY_$memoryNumber")
         return dataStore.data.map { preferences ->
             preferences[key]

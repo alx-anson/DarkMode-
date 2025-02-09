@@ -1,13 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Brightness Filter (for car)</string>
-    <string name="adjust">Click to manage the brightness</string>
-    <string name="on">On</string>
-    <string name="off">Off</string>
-    <string name="minus">-</string>
-    <string name="plus">+</string>
-    <string name="warning">Don\'t close the app, keep it in the background</string>
-    <string name="dialog_title">Permission request</string>
+    <string name="app_name">Easy Brightness Filter (for Car)</string>
+    <string name="push">Press the button to darken the screen</string>
+    <string name="adjust">Swipe to adjust brightness</string>
+    <string name="save_configurations">You can save up to 3 brightness settings</string>
+    <string name="memory">Memory %s</string>
+    <string name="long_click">Hold down to save memory</string>
+    <string name="memory_saved">Memory %s saved</string>
+    <string name="on">Turn On</string>
+    <string name="off">Turn Off</string>
+    <string name="warning">Remember to keep the app running in the background</string>
+    <string name="dialog_title">Permission Request</string>
     <string name="dialog_message">This app requires permission to display overlay windows</string>
     <string name="dialog_accept">Allow</string>
     <string name="dialog_cancel">Cancel</string>
+    <string name="ok">Done</string>
 </resources>

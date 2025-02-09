@@ -30,8 +30,10 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.pointer.pointerInput
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.anson.darkmodeplus.R
 import com.anson.darkmodeplus.view.ui.Color
 import com.anson.darkmodeplus.view.ui.typo
 import com.anson.darkmodeplus.view.viewmodel.MainViewModel
@@ -52,7 +54,7 @@ fun Content(viewModel: MainViewModel, contentPadding: PaddingValues) {
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
             Text(
-                text = if (!overlayEnabled) "Pulsa el botón para oscurecer la pantalla" else "Desliza para ajustar el brillo",
+                text = if (!overlayEnabled) stringResource(id = R.string.push) else stringResource(id = R.string.adjust),
                 fontSize = 48.sp,
                 color = MaterialTheme.colorScheme.onBackground,
                 style = MaterialTheme.typography.bodyLarge
@@ -70,7 +72,7 @@ fun Content(viewModel: MainViewModel, contentPadding: PaddingValues) {
                 onClick = { viewModel.toggleOverlay() }
             ) {
                 Text(
-                    text = if (overlayEnabled) "Apagar" else "Encender",
+                    text = if (overlayEnabled) stringResource(id = R.string.off) else stringResource(id = R.string.on),
                     fontSize = 32.sp,
                     color = MaterialTheme.colorScheme.onBackground,
                     style = MaterialTheme.typo.bodyLarge
@@ -85,7 +87,7 @@ fun Content(viewModel: MainViewModel, contentPadding: PaddingValues) {
                 .padding(16.dp)
         ) {
             Text(
-                "Recuerda mantener la aplicación en segundo plano",
+                stringResource(id = R.string.warning),
                 color = Color().warning,
                 style = MaterialTheme.typo.bodyMedium
             )
@@ -126,7 +128,7 @@ fun MemorySection(viewModel: MainViewModel) {
     val enabled by viewModel.overlayEnabled.collectAsState()
     Column(modifier = Modifier.padding(top = 56.dp), horizontalAlignment = Alignment.CenterHorizontally) {
         Text(
-            text = "Puedes guardar hasta 3 ajustes de brillo",
+            text = stringResource(id = R.string.save_configurations),
             style = MaterialTheme.typo.titleLarge,
             color = if (enabled) Color().onBackground else Color().background
         )
@@ -134,21 +136,21 @@ fun MemorySection(viewModel: MainViewModel) {
         Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Center) {
             MemoryButton(
                 enabled = enabled,
-                text = "Memoria 1",
+                text = stringResource(id = R.string.memory, 1),
                 onClick = { viewModel.selectMemory(1) },
                 onLongClick = { viewModel.saveMemory(1) }
             )
             Spacer(modifier = Modifier.width(16.dp))
             MemoryButton(
                 enabled = enabled,
-                text = "Memoria 2",
+                text = stringResource(id = R.string.memory, 2),
                 onClick = { viewModel.selectMemory(2) },
                 onLongClick = { viewModel.saveMemory(2) }
             )
             Spacer(modifier = Modifier.width(16.dp))
             MemoryButton(
                 enabled = enabled,
-                text = "Memoria 3",
+                text = stringResource(id = R.string.memory, 3),
                 onClick = { viewModel.selectMemory(3) },
                 onLongClick = { viewModel.saveMemory(3) }
             )
@@ -156,7 +158,7 @@ fun MemorySection(viewModel: MainViewModel) {
         Spacer(modifier = Modifier.height(32.dp))
 
         Text(
-            text = "Mantén pulsado para guardar la memoria",
+            text = stringResource(id = R.string.long_click),
             style = MaterialTheme.typo.bodyMedium,
             color = if (enabled) Color().onBackground else Color().background
         )

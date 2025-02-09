@@ -8,17 +8,27 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Snackbar
 import androidx.compose.material3.SnackbarDuration
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
+import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.anson.darkmodeplus.R
 import com.anson.darkmodeplus.view.screens.Content
+import com.anson.darkmodeplus.view.ui.Color
 import com.anson.darkmodeplus.view.ui.DarkModePlusTheme
 import com.anson.darkmodeplus.view.viewmodel.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -40,10 +50,11 @@ class MainActivity : ComponentActivity() {
                 val memorySaved by viewModel.memorySaved.collectAsState()
                 val scope = rememberCoroutineScope()
                 if (memorySaved != 0) {
+                    val snackBarMessage = stringResource(id = R.string.memory_saved, memorySaved)
                     LaunchedEffect(Unit) {
                         scope.launch {
                             snackBarHostState.showSnackbar(
-                                message = "Memoria $memorySaved guardada",
+                                message = snackBarMessage,
                                 duration = SnackbarDuration.Short
                             )
                             delay(500)
@@ -53,7 +64,29 @@ class MainActivity : ComponentActivity() {
                 }
                 Scaffold(
                     snackbarHost = {
-                        SnackbarHost(hostState = snackBarHostState)
+                        SnackbarHost(hostState = snackBarHostState) { data ->
+                            Snackbar(
+                                modifier = Modifier
+                                    .padding(16.dp),
+                                containerColor = Color().secondary,
+                                contentColor = Color().onSurface,
+                                shape = RoundedCornerShape(16.dp),
+                                action = {
+                                    TextButton(onClick = { snackBarHostState.currentSnackbarData?.dismiss() }) {
+                                        Text(
+                                            text = stringResource(id = R.string.ok),
+                                            fontSize = 16.sp,
+                                            color = Color().onSurface
+                                        )
+                                    }
+                                }
+                            ) {
+                                Text(
+                                    text = data.visuals.message,
+                                    color = Color().onSurface
+                                )
+                            }
+                        }
                     }
                 ) { contentPadding ->
                     Content(viewModel = viewModel, contentPadding)

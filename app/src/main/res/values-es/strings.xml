@@ -1,14 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Filtro de brillo fácil (para coche)</string>
-    <string name="adjust">Pulsa para ajustar el brillo</string>
-    <string name="on">On</string>
-    <string name="off">Off</string>
-    <string name="minus">-</string>
-    <string name="plus">+</string>
-    <string name="warning">No cierres la app, mantenla en segundo plano</string>
+    <string name="app_name">Dim Screen (for Car)</string>
+    <string name="push">Pulsa el botón para oscurecer la pantalla</string>
+    <string name="adjust">Desliza para ajustar el brillo</string>
+    <string name="save_configurations">Puedes guardar hasta 3 ajustes de brillo</string>
+    <string name="memory">Memoria %s</string>
+    <string name="long_click">Mantén pulsado para guardar la memoria</string>
+    <string name="memory_saved">Memoria %s guardada</string>
+    <string name="on">Encender</string>
+    <string name="off">Apagar</string>
+    <string name="warning">Recuerda mantener la aplicación en segundo plano</string>
     <string name="dialog_title">Solicitud de permiso</string>
     <string name="dialog_message">Esta aplicación requiere el permiso para mostrar ventanas de superposición</string>
     <string name="dialog_accept">Permitir</string>
     <string name="dialog_cancel">Cancelar</string>
+    <string name="ok">Vale</string>
 </resources>
