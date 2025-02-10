@@ -162,8 +162,7 @@ fun MemorySection(viewModel: MainViewModel) {
                 onLongClick = { viewModel.saveMemory(3) }
             )
         }
-        Spacer(modifier = Modifier.height(16.dp))
-
+        Spacer(modifier = Modifier.height(24.dp))
         Text(
             text = stringResource(id = R.string.long_click),
             style = MaterialTheme.typo.bodyMedium,
