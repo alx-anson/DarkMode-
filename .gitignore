@@ -15,3 +15,5 @@
 local.properties
 *.hprof
 /.kotlin/errors/
+/app/debug/
+/app/release/

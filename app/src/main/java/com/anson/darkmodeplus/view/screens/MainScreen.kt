@@ -1,5 +1,6 @@
 package com.anson.darkmodeplus.view.screens
 
+import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.gestures.detectTapGestures
@@ -52,6 +53,7 @@ fun Content(viewModel: MainViewModel, contentPadding: PaddingValues) {
         Column(
             verticalArrangement = Arrangement.SpaceAround,
             horizontalAlignment = Alignment.CenterHorizontally,
+            modifier = Modifier.padding(bottom = 16.dp)
         ) {
             Text(
                 text = if (!overlayEnabled) stringResource(id = R.string.push) else stringResource(id = R.string.adjust),
@@ -66,7 +68,7 @@ fun Content(viewModel: MainViewModel, contentPadding: PaddingValues) {
                     .width(230.dp),
                 shape = RoundedCornerShape(16.dp),
                 colors = ButtonDefaults.buttonColors(
-                    containerColor = if (overlayEnabled) MaterialTheme.colorScheme.error else Color().primary,
+                    containerColor = if (overlayEnabled) Color().red else Color().primary,
                     contentColor = Color().onPrimary
                 ),
                 onClick = { viewModel.toggleOverlay() }
@@ -78,8 +80,12 @@ fun Content(viewModel: MainViewModel, contentPadding: PaddingValues) {
                     style = MaterialTheme.typo.bodyLarge
                 )
             }
-            OverlayControls(viewModel = viewModel)
-            MemorySection(viewModel = viewModel)
+            AnimatedVisibility(overlayEnabled) {
+                OverlayControls(viewModel = viewModel)
+            }
+            AnimatedVisibility(overlayEnabled) {
+                MemorySection(viewModel = viewModel)
+            }
         }
         Box(
             contentAlignment = Alignment.BottomEnd, modifier = Modifier
@@ -89,7 +95,7 @@ fun Content(viewModel: MainViewModel, contentPadding: PaddingValues) {
             Text(
                 stringResource(id = R.string.warning),
                 color = Color().warning,
-                style = MaterialTheme.typo.bodyMedium
+                style = MaterialTheme.typo.bodyLarge
             )
         }
     }
@@ -100,18 +106,19 @@ fun OverlayControls(viewModel: MainViewModel) {
     val overlayLv by viewModel.overlayLv.collectAsState()
     val enabled by viewModel.overlayEnabled.collectAsState()
 
-    Column(modifier = Modifier.padding(top = 56.dp)) {
+    Column(modifier = Modifier.padding(top = 42.dp)) {
         Slider(
             value = overlayLv.toFloat(),
             onValueChange = { viewModel.updateOverlayLevel(it.toInt()) },
-            valueRange = 0f..200f,
-            steps = 200,
+            valueRange = 0f..230f,
+            steps = 230,
             enabled = enabled,
             modifier = Modifier.width(400.dp),
             colors = SliderDefaults.colors(
-                thumbColor = Color().tertiary,
+                thumbColor = Color().warning,
                 activeTrackColor = Color().tertiary,
                 inactiveTrackColor = Color().tertiary.copy(alpha = 0.5f),
+                activeTickColor = Color().onPrimary,
                 disabledThumbColor = Color().background,
                 disabledActiveTrackColor = Color().background,
                 disabledActiveTickColor = Color().background,
@@ -126,7 +133,7 @@ fun OverlayControls(viewModel: MainViewModel) {
 @Composable
 fun MemorySection(viewModel: MainViewModel) {
     val enabled by viewModel.overlayEnabled.collectAsState()
-    Column(modifier = Modifier.padding(top = 56.dp), horizontalAlignment = Alignment.CenterHorizontally) {
+    Column(modifier = Modifier.padding(top = 42.dp), horizontalAlignment = Alignment.CenterHorizontally) {
         Text(
             text = stringResource(id = R.string.save_configurations),
             style = MaterialTheme.typo.titleLarge,
@@ -155,7 +162,7 @@ fun MemorySection(viewModel: MainViewModel) {
                 onLongClick = { viewModel.saveMemory(3) }
             )
         }
-        Spacer(modifier = Modifier.height(32.dp))
+        Spacer(modifier = Modifier.height(16.dp))
 
         Text(
             text = stringResource(id = R.string.long_click),

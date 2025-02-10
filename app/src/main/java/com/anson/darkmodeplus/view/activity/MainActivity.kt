@@ -10,6 +10,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Snackbar
 import androidx.compose.material3.SnackbarDuration
@@ -30,6 +31,7 @@ import com.anson.darkmodeplus.R
 import com.anson.darkmodeplus.view.screens.Content
 import com.anson.darkmodeplus.view.ui.Color
 import com.anson.darkmodeplus.view.ui.DarkModePlusTheme
+import com.anson.darkmodeplus.view.ui.typo
 import com.anson.darkmodeplus.view.viewmodel.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.delay
@@ -76,14 +78,16 @@ class MainActivity : ComponentActivity() {
                                         Text(
                                             text = stringResource(id = R.string.ok),
                                             fontSize = 16.sp,
-                                            color = Color().onSurface
+                                            color = Color().onSurface,
+                                            style = MaterialTheme.typo.bodyMedium
                                         )
                                     }
                                 }
                             ) {
                                 Text(
                                     text = data.visuals.message,
-                                    color = Color().onSurface
+                                    color = Color().onSurface,
+                                    style = MaterialTheme.typo.bodyMedium
                                 )
                             }
                         }

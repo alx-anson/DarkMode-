@@ -7,9 +7,10 @@ class Color {
     val secondary = Color(0xFF1E1E1E)
     val background = Color(0xFF121212)
     val onPrimary = Color(0xFFE0E0E0)
+    val red = Color(0xFFB3261E)
     val onBackground = Color(0xFFE0E0E0)
     val onSurface = Color(0xFF37D95B)
-    val warning = Color(0xFFFF9800)
+    val warning = Color(0xFFFFA500)
     val tertiary = Color(0xFF9252FF)
 }
 

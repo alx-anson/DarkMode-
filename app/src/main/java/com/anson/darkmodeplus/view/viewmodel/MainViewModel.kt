@@ -24,7 +24,7 @@ class MainViewModel @Inject constructor(
     private val _overlayEnabled = MutableStateFlow(false)
     val overlayEnabled: StateFlow<Boolean> = _overlayEnabled
 
-    private val _overlayLv = MutableStateFlow(100)
+    private val _overlayLv = MutableStateFlow(115)
     val overlayLv: StateFlow<Int> = _overlayLv
 
     private val _memorySaved = MutableStateFlow(0)
