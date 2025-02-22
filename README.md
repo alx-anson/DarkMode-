@@ -23,11 +23,9 @@ DarkMode+ is an Android application designed primarily for Chinese car radios. I
 
 ## Screenshots
 
-```markdown
 ![App turned off](Screenshots/English/Screenshot-1.png)
 ![App on and memory saved](Screenshots/English/Screenshot-2.png)
 ![Almost full darkness](Screenshots/English/Screenshot-3.png)
-```
 
 ## Contribution
 If you would like to improve the app or report issues, you can do so via issues or pull requests in this repository.
@@ -62,11 +60,10 @@ DarkMode+ es una aplicación diseñada para dispositivos Android, especialmente 
 
 ## Capturas de pantalla
 
-```markdown
+
 ![App apagada](Screenshots/Spanish/Screenshot-1.png)
 ![App encendida y memoria guardada](Screenshots/Spanish/Screenshot-2.png)
 ![Oscuridad casi a tope](Screenshots/Spanish/Screenshot-3.png)
-```
 
 ## Contribución
 Si deseas mejorar la aplicación o reportar errores, puedes hacerlo mediante issues o pull requests en este repositorio.
