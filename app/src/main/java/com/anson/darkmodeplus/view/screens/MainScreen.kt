@@ -25,9 +25,12 @@ import androidx.compose.material3.Slider
 import androidx.compose.material3.SliderDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.pointer.pointerInput
@@ -38,6 +41,7 @@ import com.anson.darkmodeplus.R
 import com.anson.darkmodeplus.view.ui.Color
 import com.anson.darkmodeplus.view.ui.typo
 import com.anson.darkmodeplus.view.viewmodel.MainViewModel
+import kotlinx.coroutines.delay
 
 @Composable
 fun Content(viewModel: MainViewModel, contentPadding: PaddingValues) {
@@ -173,6 +177,14 @@ fun MemorySection(viewModel: MainViewModel) {
 
 @Composable
 fun MemoryButton(enabled: Boolean, text: String, onClick: () -> Unit, onLongClick: () -> Unit) {
+    var buttonPushed by remember { mutableStateOf(false) }
+    val backgroundColor = if (buttonPushed) Color().primaryPushed else Color().primary
+    if (buttonPushed) {
+        LaunchedEffect(Unit) {
+            delay(3000)
+            buttonPushed = false
+        }
+    }
     Box(
         modifier = Modifier
             .height(60.dp)
@@ -184,7 +196,12 @@ fun MemoryButton(enabled: Boolean, text: String, onClick: () -> Unit, onLongClic
                     },
                     onLongPress = {
                         onLongClick()
-                    }
+                    },
+                    onPress = {
+                        buttonPushed = true
+                        this.awaitRelease()
+                        buttonPushed = false
+                    },
                 )
             }
             .border(
@@ -193,7 +210,7 @@ fun MemoryButton(enabled: Boolean, text: String, onClick: () -> Unit, onLongClic
                 shape = RoundedCornerShape(16.dp)
             )
             .background(
-                color = if (enabled) Color().primary else Color().background,
+                color = if (enabled) backgroundColor else Color().background,
                 shape = RoundedCornerShape(16.dp)
             )
             .padding(8.dp),
