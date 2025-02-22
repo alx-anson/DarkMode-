@@ -30,9 +30,6 @@ DarkMode+ is an Android application designed primarily for Chinese car radios. I
 ## Contribution
 If you would like to improve the app or report issues, you can do so via issues or pull requests in this repository.
 
-## License
-This project is distributed under the [MIT](LICENSE) license.
-
 ---
 
 # DarkMode+ (DarkModePlus)
@@ -67,7 +64,4 @@ DarkMode+ es una aplicación diseñada para dispositivos Android, especialmente 
 
 ## Contribución
 Si deseas mejorar la aplicación o reportar errores, puedes hacerlo mediante issues o pull requests en este repositorio.
-
-## Licencia
-Este proyecto se distribuye bajo la licencia [MIT](LICENSE).
 
